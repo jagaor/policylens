@@ -1,0 +1,80 @@
+Política de Gestión de Identidades y Accesos (IAM) — Versión 2.1
+
+Código: POL-IAM-002
+Versión: 2.1
+Estado: Aprobada
+Clasificación: Interna
+Propietario: Dirección de Seguridad de la Información
+Aprobado por: Comité de Seguridad
+Fecha de aprobación: 2025-01-15
+Próxima revisión: 2026-01-15
+
+1. Objetivo
+
+1.1. Esta política establece los requisitos mínimos para la gestión de identidades y accesos (IAM) en la organización, con el fin de garantizar que únicamente las personas y los sistemas autorizados accedan a los recursos de información, y que dicho acceso se limite estrictamente a lo necesario para el desempeño de sus funciones.
+
+1.2. El objetivo es reducir el riesgo de acceso no autorizado, uso indebido de privilegios y acumulación de permisos obsoletos, alineando la organización con buenas prácticas de control de acceso reconocidas en el sector.
+
+2. Alcance
+
+2.1. Esta política aplica a todos los empleados, contratistas, proveedores y cuentas de servicio que accedan a sistemas de información corporativos, tanto en entornos on-premise como en la nube.
+
+2.2. Quedan incluidos los sistemas de identidad corporativa, directorios activos, plataformas SaaS, infraestructura cloud, bases de datos y cualquier aplicación que gestione autenticación o autorización.
+
+2.3. Las excepciones a esta política deberán solicitarse formalmente al propietario de la política y contar con la aprobación del Comité de Seguridad.
+
+3. Principio de Mínimo Privilegio
+
+3.1. Toda identidad, humana o no humana, deberá disponer únicamente de los permisos estrictamente necesarios para ejecutar las tareas que tenga encomendadas, durante el tiempo en que dichas tareas se realicen.
+
+3.2. Los permisos se otorgarán preferentemente mediante roles funcionales predefinidos y aprobados, evitando la asignación directa de permisos individuales salvo justificación documentada.
+
+3.3. Las cuentas de servicio utilizadas en entornos de producción tienen prohibido asumir roles administrativos globales. Cualquier excepción requerirá un análisis de riesgo específico, aprobación del propietario del sistema y del responsable de seguridad, y un plazo máximo de vigencia de treinta días, tras el cual el privilegio deberá revocarse o renovarse formalmente.
+
+3.4. Los privilegios elevados (administrador de dominio, administrador global de cloud, superusuario de base de datos) se considerarán acceso privilegiado y se regirán por la política específica de gestión de accesos privilegiados.
+
+4. Gestión del Ciclo de Vida de Identidades
+
+4.1. El alta de una identidad se realizará exclusivamente a partir de un proceso formal de incorporación o de un registro de sistema aprobado. No se crearán cuentas genéricas ni compartidas entre personas.
+
+4.2. Los cambios de rol o departamento implicarán la revisión y el ajuste de los accesos en un plazo máximo de cinco días hábiles desde la comunicación del cambio.
+
+4.3. La baja de una identidad se ejecutará el mismo día del cese o desvinculación. En caso de cese inmediato por causa disciplinaria, la revocación deberá completarse en un plazo máximo de dos horas.
+
+4.4. Las cuentas inactivas durante más de noventa días serán deshabilitadas automáticamente, salvo que exista una justificación aprobada y registrada.
+
+5. Revisión y Certificación de Accesos
+
+5.1. Se realizarán revisiones trimestrales de los accesos asignados a todas las identidades, con especial atención a los privilegios elevados y a las cuentas de servicio.
+
+5.2. Cada revisión trimestral será certificada por el responsable funcional correspondiente, quien deberá confirmar, modificar o revocar cada acceso. La plataforma de gobierno de identidades (IGA) de referencia para ejecutar y evidenciar estas revisiones es SailPoint IdentityNow.
+
+5.3. Los accesos no certificados dentro del plazo establecido se deshabilitarán automáticamente mediante la integración con la plataforma IGA, sin perjuicio de las acciones disciplinarias que correspondan.
+
+5.4. Los resultados de cada revisión se conservarán como evidencia de auditoría durante un mínimo de tres años.
+
+6. Segregación de Funciones
+
+6.1. Ninguna identidad podrá acumular permisos que permitan ejecutar y aprobar una misma operación crítica, tales como solicitar y autorizar accesos, o desarrollar y desplegar en producción sin control adicional.
+
+6.2. Los conflictos de segregación de funciones se detectarán mediante reglas definidas en la plataforma IGA y deberán resolverse antes de la asignación efectiva del acceso.
+
+7. Acceso Remoto
+
+7.1. Todo acceso remoto a sistemas corporativos requerirá autenticación multifactor (MFA) y el uso de los canales corporativos aprobados.
+
+7.2. El acceso remoto a entornos de producción se realizará exclusivamente a través de soluciones de acceso privilegiado con grabación de sesión y aprobación previa.
+
+8. Responsabilidades
+
+8.1. La Dirección de Seguridad de la Información es responsable de mantener esta política, supervisar su cumplimiento y proponer mejoras.
+
+8.2. Los propietarios de sistemas son responsables de definir los roles funcionales, aprobar los accesos a sus sistemas y participar en las certificaciones trimestrales.
+
+8.3. El equipo de IAM es responsable de operar la plataforma de gobierno de identidades, automatizar los procesos de ciclo de vida y generar la evidencia de auditoría.
+
+8.4. Todos los usuarios son responsables de proteger sus credenciales, no compartirlas y reportar cualquier acceso no autorizado o sospecha de compromiso.
+
+9. Incumplimiento
+
+9.1. El incumplimiento de esta política podrá dar lugar a la revocación inmediata de accesos y a las medidas disciplinarias que correspondan según la normativa interna aplicable.

@@ -1,0 +1,41 @@
+Política de Gestión de Accesos Privilegiados (PAM) — Versión 1.3
+
+Documento ficticio de ejemplo para el proyecto PolicyLens. No constituye asesoramiento legal ni normativo. Cualquier parecido con políticas reales de organizaciones concretas es coincidencia.
+
+Código: POL-PAM-001
+Versión: 1.3
+Estado: Aprobada
+Ámbito: Toda la organización
+Propietario: Dirección de Seguridad de la Información
+
+1. Objetivo
+
+El objetivo de esta política es establecer los controles mínimos obligatorios para la gestión, uso, supervisión y auditoría de los accesos privilegiados a los sistemas de información de la organización. Esta política complementa la Política de Gestión de Identidades y Accesos (POL-IAM-002) y se aplica a empleados, contratistas, proveedores y cualquier persona o servicio que requiera permisos elevados sobre infraestructura, aplicaciones críticas o plataformas cloud.
+
+2. Definición de Cuenta Privilegiada
+
+Se considera cuenta privilegiada toda identidad, humana o no humana, que disponga de permisos capaces de modificar la configuración de seguridad, administrar identidades, acceder a datos sensibles sin restricciones, ejecutar comandos con privilegios elevados o alterar registros de auditoría. Se incluyen, entre otras: cuentas de administrador local y de dominio, cuentas root o equivalentes en sistemas operativos, roles de administrador en plataformas cloud, cuentas de servicio con permisos de escritura sobre recursos críticos, cuentas de acceso a consolas de bases de datos y cuentas utilizadas para la gestión de dispositivos de red. Las cuentas privilegiadas deben estar inventariadas y clasificadas según su criticidad.
+
+3. Bóveda de Credenciales
+
+Todo acceso privilegiado debe gestionarse obligatoriamente a través de la bóveda de credenciales corporativa. Queda prohibido el almacenamiento de credenciales privilegiadas en ficheros locales, hojas de cálculo, gestores personales o repositorios de código. Las credenciales depositadas en la bóveda deben rotarse automáticamente cada 90 días como máximo, o de forma inmediata cuando exista sospecha de compromiso, cese del titular o cambio de funciones. La rotación debe cubrir contraseñas, claves SSH, tokens de API y secretos de aplicaciones. Como referencia de implantación se toma el estándar descrito en CyberArk EPM sección 3.2, adaptado a la solución PAM corporativa aprobada por la Dirección de Seguridad. La entrega de credenciales a los usuarios se realizará siempre mediante check-out temporal, nunca mediante visualización permanente del secreto.
+
+4. Grabación de Sesiones Privilegiadas
+
+Todas las sesiones interactivas realizadas con cuentas privilegiadas sobre sistemas de criticidad alta o media deben ser grabadas de forma íntegra, incluyendo entrada de teclado, salida de terminal y, cuando la tecnología lo permita, metadatos de conexión (origen, destino, usuario, hora). Las grabaciones se conservarán durante un mínimo de doce meses en almacenamiento de solo lectura y con control de integridad. El acceso a las grabaciones estará restringido al equipo de auditoría y a investigaciones de seguridad autorizadas. La ausencia de grabación en una sesión privilegiada constituye una no conformidad que debe registrarse y analizarse.
+
+5. Acceso Just-in-Time
+
+El acceso privilegiado debe concederse bajo el principio de mínimo privilegio y con carácter temporal. Los permisos elevados se otorgarán preferentemente mediante mecanismos just-in-time que requieran una justificación de negocio, una aprobación previa y una ventana de validez limitada. La duración máxima por defecto de una elevación será de ocho horas, salvo excepción documentada y aprobada por el responsable de seguridad. Al finalizar la ventana, los permisos deben revocarse automáticamente. Las solicitudes de elevación permanente requerirán revisión trimestral y justificación renovada.
+
+6. Cuentas de Emergencia (break-glass)
+
+La organización mantiene un conjunto reducido de cuentas de emergencia destinadas exclusivamente a la recuperación ante incidentes graves que impidan el uso de la bóveda o de los mecanismos habituales de acceso. Estas cuentas deben estar custodiadas en sobre sellado o mecanismo equivalente, con doble control y registro de apertura. Su uso debe notificarse al Centro de Operaciones de Seguridad en un plazo máximo de una hora y justificarse por escrito en las veinticuatro horas siguientes. Las credenciales de emergencia se rotarán inmediatamente después de cada uso y, en todo caso, al menos una vez al año. Su inventario se revisará semestralmente.
+
+7. Auditoría y Alertas
+
+Los registros de actividad privilegiada deben centralizarse en la plataforma de correlación de eventos y conservarse durante un mínimo de doce meses. Se generarán alertas automáticas, como mínimo, ante: intentos de acceso fallidos repetidos a cuentas privilegiadas, uso de cuentas de emergencia, conexiones fuera de la ventana just-in-time aprobada, modificaciones de la configuración de la bóveda, extracción masiva de credenciales y desactivación de la grabación de sesiones. El equipo de auditoría revisará mensualmente una muestra representativa de sesiones privilegiadas y elaborará un informe trimestral de cumplimiento para la Dirección de Seguridad.
+
+8. Sanciones por Incumplimiento
+
+El incumplimiento de esta política podrá dar lugar a la revocación inmediata de los accesos privilegiados, a la apertura de un expediente disciplinario conforme al régimen interno aplicable y, cuando proceda, a acciones legales. En el caso de proveedores y contratistas, el incumplimiento se considerará un incidente contractual grave y podrá motivar la suspensión de la relación comercial. Toda excepción a esta política deberá solicitarse por escrito, contar con un análisis de riesgo y ser aprobada por el Comité de Seguridad de la Información con una vigencia máxima de seis meses.
